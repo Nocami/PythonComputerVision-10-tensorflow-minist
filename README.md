@@ -12,7 +12,7 @@
 ### 卷积神经网络
 卷积神经网络（Convolutional Neural Network，CNN）是一种前馈神经网络，它的人工神经元可以响应一部分覆盖范围内的周围单元，对于大型图像处理有出色表现。 它包括卷积层(convolutional layer)和池化层(pooling layer)。  
 对比：卷积神经网络、全连接神经网络：  
-![image](10.jpg)  
+![image](https://github.com/Nocami/PythonComputerVision-10-tensorflow-minist/blob/master/image/10.jpg)  
 第一层：数据输入层  
 该层要做的处理主要是对原始图像数据进行预处理。  
 
@@ -21,16 +21,16 @@
 在这个卷积层，有两个关键操作：  
 •	局部关联。每个神经元看做一个滤波器(filter)  
 •	窗口(receptive field)滑动， filter对局部数据计算  
-![image](11.jpg)  
+![image](https://github.com/Nocami/PythonComputerVision-10-tensorflow-minist/blob/master/image/11.jpg)  
 这个动图展示了卷积层计算过程：  
-![image](11.gif)
+![image](https://github.com/Nocami/PythonComputerVision-10-tensorflow-minist/blob/master/image/12.gif)
 ## 二.MINIST数据集
 MNIST数据集是一个手写体数据集，也就是下面这个东西：  
-![image](2.jpg)![image](1.jpg)  
+![image](https://github.com/Nocami/PythonComputerVision-10-tensorflow-minist/blob/master/image/2.jpg)![image](https://github.com/Nocami/PythonComputerVision-10-tensorflow-minist/blob/master/image/1.jpg)  
 简单来说，MINIST是由6万张训练图片和1万张测试图片构成的数据集合，每张图片都是 像素大小28×28像素大小 ，而且都是黑白色构成，这些图片是采集的不同的人手写从0到9的数字。  
 ### 下载与使用
 http://yann.lecun.com/exdb/mnist/ 这里提供了训练集与测试集的下载，可以看到它包含四个文件：  
-![image](3.jpg)  
+![image](https://github.com/Nocami/PythonComputerVision-10-tensorflow-minist/blob/master/image/3.jpg)  
 四部分下载地址分别是：  
 
 http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz  训练集图片  
@@ -351,7 +351,7 @@ saver.save(sess,"save/model")
 运行上述代码，会在文件夹中保存**model**文件，这个就是最终训练出来的模型。在模型训练的过程中，我们可以看到相关的预测正确率以及出错的个体。  
 代码运行需要耗费大量的机能，期间CPUGPU会满载，请耐心等待。  
 截取了前几组的结果，如下：  
-![image](4.jpg)  
+![image](https://github.com/Nocami/PythonComputerVision-10-tensorflow-minist/blob/master/image/4.jpg)  
 可以看到，简单的几轮回滚之后，正确率已经开始趋于99%了。  
 最终代码运行完毕之后，我们得到了训练后的网络模型，使用此网络，我们使用一个demo来对其进行验证：  
 ~~~python
@@ -417,14 +417,14 @@ if __name__ == "__main__":
 
 ~~~
 运行结果：  
-![image](5.jpg)  
+![image](https://github.com/Nocami/PythonComputerVision-10-tensorflow-minist/blob/master/image/5.jpg)  
 选择一个图片"8"来进行测试：  
-![image](6.jpg)  
+![image](https://github.com/Nocami/PythonComputerVision-10-tensorflow-minist/blob/master/image/6.jpg)  
 可以看到，尽管肉眼看上去这张图片和8差异很大，但可以勉强看出它是八，系统也成功识别。  
-![image](7.jpg)  
+![image](https://github.com/Nocami/PythonComputerVision-10-tensorflow-minist/blob/master/image/7.jpg)  
 但是当图片差异较大时，比如这个，它人眼识别上去都比较像9，所以我们的神经网络也将它识别错误了。  
-![image](8.jpg)  
+![image](https://github.com/Nocami/PythonComputerVision-10-tensorflow-minist/blob/master/image/8.jpg)  
 这张图片，本来应该是3，却被识别成了8.  
-![image](9.jpg)  
+![image](https://github.com/Nocami/PythonComputerVision-10-tensorflow-minist/blob/master/image/9.jpg)  
 此图本来为6，却被识别为0.  
 错误的例子还有很多，通过对识别错误的图像进行分析，我们发现，当所识别图像过于抽象，即书写不规范时，虽然肉眼可以勉强区分出其区别，可我们的网络并不能准确识别。虽然面对数据时，大部分情况下可以准确识别，可少数个别抽象数据则不能正确识别。这说明我们的网络还有缺陷，还需改进。
